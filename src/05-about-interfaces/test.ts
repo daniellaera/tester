@@ -6,7 +6,7 @@ describe('about interfaces', () => {
     var person : _ = {
       firstName: 'John'
     };
-    expect(person.firstName).to.equal( _ );n' );
+    expect(person.firstName).to.equal( _ );
   });
 
   it('2-should be possible to use it as a type', () => {
