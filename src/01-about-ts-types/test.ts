@@ -4,7 +4,7 @@ var expect = chai.expect;
 describe('about ts types', () => {
   it('1-should compile to plain javascript', () => {
     var boolean; // _
-    var integer: string = ''; // _
+    var integer; // _
     var float; // _
     var foo; // _
     expect(boolean).to.be.true;
