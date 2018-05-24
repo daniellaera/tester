@@ -3,10 +3,10 @@ var expect = chai.expect;
 
 describe('about ts types', () => {
   it('1-should compile to plain javascript', () => {
-    var boolean; // _
-    var integer; // _
-    var float; // _
-    var foo; // _
+    var boolean: boolean = true; // _
+    var integer: number = 6; // _
+    var float: number = Math.PI; // _
+    var foo: string = 'bar'; // _
     expect(boolean).to.be.true;
     expect(integer).to.equal(6);
     expect(float).to.equal(Math.PI);

@@ -10,8 +10,10 @@ describe('about classes', () => {
 
   it('1-your first class', () => {
     class SuperHero { 
+      constructor(private name: string, private surname: string){
+      }
       talk(){
-        
+        return `My favourite saying is : Hi my name is ${this.name} ${this.surname}`
       }
     } // _
 
@@ -74,7 +76,7 @@ describe('about classes', () => {
     }
 
     var developer = new Developer('JavaScript');
-    expect(developer.sayHi.call( _ ))
+    expect(developer.sayHi.call({favouriteLanguage: 'TypeScript'} ))
       .to.equal('Hello my favourite language is TypeScript');
   });
 

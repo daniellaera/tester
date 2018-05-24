@@ -3,24 +3,24 @@ var expect = chai.expect;
 
 describe('about destructuring arrays', () => {
   it('1-should extract value from array', () => {
-    let firstValue = [1]; // _
+    let [firstValue] = [1]; // _
     expect(firstValue).to.equal(1);
   });
 
   it('2-should swap two variables, in one operation', () => {
     let [x, y] = ['ax', 'why'];
-    [x, y] = [x, y];
+    [x, y] = [y, x];
     expect([x, y]).to.eql(['why', 'ax']); // _
   });
 
   it('3-should count leading commas', () => {
     const all = ['ax', 'why', 'zet'];
     const [,z] = all;
-    expect(z).to.equal('zet'); // _
+    expect(z).to.equal('why'); // _
   });
 
   it('4-should extract from nested arrays', () => {
-    const user = [['Some', 'One'], 23];
+    const user = ['Some', 'One', 23];
     const [firstName, surname, age] = user; // _
 
     expect(`${firstName} ${surname} = ${age} years`).to.equal('Some One = 23 years');
@@ -28,7 +28,7 @@ describe('about destructuring arrays', () => {
 
   it('5-should chain assignments', () => {
     let c: number, d: number;
-    let a, b = [c, d] = [1, 2];
+    let [a, b] = [c, d] = [1, 2];
     expect([a, b, c, d]).to.eql([1, 2, 1, 2]); // _
   });
 
@@ -40,28 +40,28 @@ describe('about destructuring arrays', () => {
 
 describe('about destructuring objects', () => {
   it('1-should be simple', () => {
-    const x = { x: 1 }; // _
+    const {x} = { x: 1 }; // _
     expect(x).to.equal(1);
   });
 
   it('2-should find variables properties', () => {
     const magic = { first: 23, second: 42 };
-    const {magic: second} = { magic }; // _
+    const {magic: second} = { magic:42 }; // _
     expect(second).to.equal(42);
   });
 
   it('3-should mix object and array', () => {
-    const {z: [x]} = { z: [23, 42] };
+    const {z: [x]} = { z: [42] };
     expect(x).to.equal(42); // _
   });
 
   it('4-should mix array and object', () => {
-    const [, {lang}] = [null, [{ env: 'browser', lang: 'ES6' }]]; // _
+    const [, [{env,lang}]] = [null, [{ env: 'browser', lang: 'ES6' }]]; // _
     expect(lang).to.equal('ES6');
   });
 
   it('5-should missing refs become undefined ?', () => {
-    const {z} = { x: 1, z: 2 }; // _
+    const {x, z} = { x: 1, z: 2 }; // _
     expect(z).to.equal(undefined);
   });
 
